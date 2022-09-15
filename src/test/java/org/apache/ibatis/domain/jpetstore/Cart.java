@@ -1,11 +1,11 @@
-/**
- *    Copyright 2009-2019 the original author or authors.
+/*
+ *    Copyright 2009-2022 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
  *    You may obtain a copy of the License at
  *
- *       http://www.apache.org/licenses/LICENSE-2.0
+ *       https://www.apache.org/licenses/LICENSE-2.0
  *
  *    Unless required by applicable law or agreed to in writing, software
  *    distributed under the License is distributed on an "AS IS" BASIS,
@@ -43,7 +43,7 @@ public class Cart implements Serializable {
   }
 
   public void addItem(Item item, boolean isInStock) {
-    CartItem cartItem = (CartItem) itemMap.get(item.getItemId());
+    CartItem cartItem = itemMap.get(item.getItemId());
     if (cartItem == null) {
       cartItem = new CartItem();
       cartItem.setItem(item);
@@ -56,7 +56,7 @@ public class Cart implements Serializable {
   }
 
   public Item removeItemById(String itemId) {
-    CartItem cartItem = (CartItem) itemMap.remove(itemId);
+    CartItem cartItem = itemMap.remove(itemId);
     if (cartItem == null) {
       return null;
     } else {
@@ -66,12 +66,12 @@ public class Cart implements Serializable {
   }
 
   public void incrementQuantityByItemId(String itemId) {
-    CartItem cartItem = (CartItem) itemMap.get(itemId);
+    CartItem cartItem = itemMap.get(itemId);
     cartItem.incrementQuantity();
   }
 
   public void setQuantityByItemId(String itemId, int quantity) {
-    CartItem cartItem = (CartItem) itemMap.get(itemId);
+    CartItem cartItem = itemMap.get(itemId);
     cartItem.setQuantity(quantity);
   }
 
@@ -79,7 +79,7 @@ public class Cart implements Serializable {
     BigDecimal subTotal = new BigDecimal("0");
     Iterator<CartItem> items = getCartItems();
     while (items.hasNext()) {
-      CartItem cartItem = (CartItem) items.next();
+      CartItem cartItem = items.next();
       Item item = cartItem.getItem();
       BigDecimal listPrice = item.getListPrice();
       BigDecimal quantity = new BigDecimal(String.valueOf(cartItem.getQuantity()));

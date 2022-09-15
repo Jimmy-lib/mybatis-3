@@ -1,11 +1,11 @@
-/**
- *    Copyright 2009-2019 the original author or authors.
+/*
+ *    Copyright 2009-2022 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
  *    You may obtain a copy of the License at
  *
- *       http://www.apache.org/licenses/LICENSE-2.0
+ *       https://www.apache.org/licenses/LICENSE-2.0
  *
  *    Unless required by applicable law or agreed to in writing, software
  *    distributed under the License is distributed on an "AS IS" BASIS,
@@ -62,13 +62,13 @@ public class BatchExecutor extends BaseExecutor {
       int last = statementList.size() - 1;
       stmt = statementList.get(last);
       applyTransactionTimeout(stmt);
-      handler.parameterize(stmt);//fix Issues 322
+      handler.parameterize(stmt);// fix Issues 322
       BatchResult batchResult = batchResultList.get(last);
       batchResult.addParameterObject(parameterObject);
     } else {
       Connection connection = getConnection(ms.getStatementLog());
       stmt = handler.prepare(connection, transaction.getTimeout());
-      handler.parameterize(stmt);    //fix Issues 322
+      handler.parameterize(stmt);    // fix Issues 322
       currentSql = sql;
       currentStatement = ms;
       statementList.add(stmt);
@@ -102,9 +102,10 @@ public class BatchExecutor extends BaseExecutor {
     StatementHandler handler = configuration.newStatementHandler(wrapper, ms, parameter, rowBounds, null, boundSql);
     Connection connection = getConnection(ms.getStatementLog());
     Statement stmt = handler.prepare(connection, transaction.getTimeout());
-    stmt.closeOnCompletion();
     handler.parameterize(stmt);
-    return handler.queryCursor(stmt);
+    Cursor<E> cursor = handler.queryCursor(stmt);
+    stmt.closeOnCompletion();
+    return cursor;
   }
 
   @Override

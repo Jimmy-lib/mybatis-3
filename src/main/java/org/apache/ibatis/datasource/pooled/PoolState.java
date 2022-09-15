@@ -1,11 +1,11 @@
-/**
- *    Copyright 2009-2018 the original author or authors.
+/*
+ *    Copyright 2009-2022 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
  *    You may obtain a copy of the License at
  *
- *       http://www.apache.org/licenses/LICENSE-2.0
+ *       https://www.apache.org/licenses/LICENSE-2.0
  *
  *    Unless required by applicable law or agreed to in writing, software
  *    distributed under the License is distributed on an "AS IS" BASIS,
@@ -73,7 +73,6 @@ public class PoolState {
     return requestCount == 0 ? 0 : accumulatedCheckoutTime / requestCount;
   }
 
-
   public synchronized int getIdleConnectionCount() {
     return idleConnections.size();
   }
@@ -85,7 +84,7 @@ public class PoolState {
   @Override
   public synchronized String toString() {
     StringBuilder builder = new StringBuilder();
-    builder.append("\n===CONFINGURATION==============================================");
+    builder.append("\n===CONFIGURATION==============================================");
     builder.append("\n jdbcDriver                     ").append(dataSource.getDriver());
     builder.append("\n jdbcUrl                        ").append(dataSource.getUrl());
     builder.append("\n jdbcUsername                   ").append(dataSource.getUsername());

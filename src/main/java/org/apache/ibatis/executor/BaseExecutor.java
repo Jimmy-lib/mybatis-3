@@ -1,11 +1,11 @@
-/**
- *    Copyright 2009-2019 the original author or authors.
+/*
+ *    Copyright 2009-2022 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
  *    You may obtain a copy of the License at
  *
- *       http://www.apache.org/licenses/LICENSE-2.0
+ *       https://www.apache.org/licenses/LICENSE-2.0
  *
  *    Unless required by applicable law or agreed to in writing, software
  *    distributed under the License is distributed on an "AS IS" BASIS,
@@ -91,7 +91,7 @@ public abstract class BaseExecutor implements Executor {
         }
       }
     } catch (SQLException e) {
-      // Ignore.  There's nothing that can be done at this point.
+      // Ignore. There's nothing that can be done at this point.
       log.warn("Unexpected exception on closing transaction.  Cause: " + e);
     } finally {
       transaction = null;
@@ -267,11 +267,9 @@ public abstract class BaseExecutor implements Executor {
     }
   }
 
-  protected abstract int doUpdate(MappedStatement ms, Object parameter)
-      throws SQLException;
+  protected abstract int doUpdate(MappedStatement ms, Object parameter) throws SQLException;
 
-  protected abstract List<BatchResult> doFlushStatements(boolean isRollback)
-      throws SQLException;
+  protected abstract List<BatchResult> doFlushStatements(boolean isRollback) throws SQLException;
 
   protected abstract <E> List<E> doQuery(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler, BoundSql boundSql)
       throws SQLException;
@@ -291,8 +289,11 @@ public abstract class BaseExecutor implements Executor {
 
   /**
    * Apply a transaction timeout.
-   * @param statement a current statement
-   * @throws SQLException if a database access error occurs, this method is called on a closed <code>Statement</code>
+   *
+   * @param statement
+   *          a current statement
+   * @throws SQLException
+   *           if a database access error occurs, this method is called on a closed <code>Statement</code>
    * @since 3.4.0
    * @see StatementUtil#applyTransactionTimeout(Statement, Integer, Integer)
    */

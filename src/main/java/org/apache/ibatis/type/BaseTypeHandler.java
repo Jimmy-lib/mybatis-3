@@ -1,11 +1,11 @@
-/**
- *    Copyright 2009-2019 the original author or authors.
+/*
+ *    Copyright 2009-2022 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
  *    You may obtain a copy of the License at
  *
- *       http://www.apache.org/licenses/LICENSE-2.0
+ *       https://www.apache.org/licenses/LICENSE-2.0
  *
  *    Unless required by applicable law or agreed to in writing, software
  *    distributed under the License is distributed on an "AS IS" BASIS,
@@ -44,6 +44,10 @@ public abstract class BaseTypeHandler<T> extends TypeReference<T> implements Typ
   protected Configuration configuration;
 
   /**
+   * Sets the configuration.
+   *
+   * @param c
+   *          the new configuration
    * @deprecated Since 3.5.0 - See https://github.com/mybatis/mybatis-3/issues/1203. This property will remove future.
    */
   @Deprecated
@@ -105,7 +109,15 @@ public abstract class BaseTypeHandler<T> extends TypeReference<T> implements Typ
   public abstract void setNonNullParameter(PreparedStatement ps, int i, T parameter, JdbcType jdbcType) throws SQLException;
 
   /**
-   * @param columnName Colunm name, when configuration <code>useColumnLabel</code> is <code>false</code>
+   * Gets the nullable result.
+   *
+   * @param rs
+   *          the rs
+   * @param columnName
+   *          Column name, when configuration <code>useColumnLabel</code> is <code>false</code>
+   * @return the nullable result
+   * @throws SQLException
+   *           the SQL exception
    */
   public abstract T getNullableResult(ResultSet rs, String columnName) throws SQLException;
 
